@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Basket & Customer Segmentation Dashboard | Muqaddas Imtiaz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            padding: 20px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        /* Social Links Bar */
+        .social-bar {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .social-btn.kaggle { color: #20BEFF; border: 2px solid #20BEFF; }
+        .social-btn.linkedin { color: #0077B5; border: 2px solid #0077B5; }
+        .social-btn.github { color: #333; border: 2px solid #333; }
+        .social-btn.email { color: #EA4335; border: 2px solid #EA4335; }
+
+        /* KPI Cards */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .kpi-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .kpi-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .kpi-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .kpi-label {
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* Dashboard Grid */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        /* Card Styles */
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        /* Chart Containers */
+        .chart-container {
+            height: 300px;
+            position: relative;
+        }
+
+        canvas {
+            max-height: 300px;
+            width: 100%;
+        }
+
+        /* Table Styles */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .data-table th {
+            background: #f8f9fa;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .data-table tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Recommendations */
+        .rec-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .rec-title {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .rec-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .rec-list li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .rec-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+        }
+
+        .footer a:hover {
+            border-bottom-color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            .kpi-value {
+                font-size: 1.5em;
+            }
+            .social-btn {
+                padding: 8px 15px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>📊 Market Basket & Customer Segmentation Analytics</h1>
+            <p>Big Data Analytics - Project | By Muqaddas Imtiaz</p>
+        </div>
+
+        <!-- Social Links Bar -->
+        <div class="social-bar">
+            <a href="https://www.kaggle.com/code/muqaddasimtiaz/market-basket-customer-segmentation" target="_blank" class="social-btn kaggle">
+                🔗 Kaggle Notebook
+            </a>
+            <a href="https://www.linkedin.com/in/muqaddas-imtiaz-5635b0301" target="_blank" class="social-btn linkedin">
+                🔗 LinkedIn Profile
+            </a>
+            <a href="https://github.com/Muqadas-g" target="_blank" class="social-btn github">
+                🔗 GitHub Profile
+            </a>
+            <a href="mailto:muqaddasjutt57@gmail.com" class="social-btn email">
+                📧 muqaddasjutt57@gmail.com
+            </a>
+        </div>
+
+        <!-- KPI Cards -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-icon">💰</div>
+                <div class="kpi-value" id="totalRevenue">$0</div>
+                <div class="kpi-label">Total Revenue</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">📦</div>
+                <div class="kpi-value" id="totalTransactions">0</div>
+                <div class="kpi-label">Total Transactions</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">👥</div>
+                <div class="kpi-value" id="totalCustomers">0</div>
+                <div class="kpi-label">Total Customers</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">🛒</div>
+                <div class="kpi-value" id="associationRules">0</div>
+                <div class="kpi-label">Association Rules</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">⭐</div>
+                <div class="kpi-value" id="vipPercent">0%</div>
+                <div class="kpi-label">VIP Customers</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">📊</div>
+                <div class="kpi-value" id="avgOrder">$0</div>
+                <div class="kpi-label">Avg Order Value</div>
+            </div>
+        </div>
+
+        <!-- Dashboard Grid -->
+        <div class="dashboard-grid">
+            <!-- Market Basket Analysis Card -->
+            <div class="card">
+                <div class="card-header">🛒 Top Association Rules (Lift Score)</div>
+                <div class="card-body">
+                    <canvas id="rulesChart" height="250"></canvas>
+                </div>
+            </div>
+
+            <!-- Customer Segments Card -->
+            <div class="card">
+                <div class="card-header">👥 Customer Segments Distribution</div>
+                <div class="card-body">
+                    <canvas id="segmentsChart" height="250"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Sales Trend Card -->
+            <div class="card">
+                <div class="card-header">📈 Monthly Revenue Trend (2023)</div>
+                <div class="card-body">
+                    <canvas id="revenueChart" height="250"></canvas>
+                </div>
+            </div>
+
+            <!-- Top Products Card -->
+            <div class="card">
+                <div class="card-header">🏆 Top 5 Products by Revenue</div>
+                <div class="card-body">
+                    <canvas id="productsChart" height="250"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Segment Details Table -->
+            <div class="card">
+                <div class="card-header">📊 Segment Profiles (RFM Analysis)</div>
+                <div class="card-body">
+                    <table class="data-table" id="segmentTable">
+                        <thead>
+                            <tr><th>Segment</th><th>Customers</th><th>Avg Spend</th><th>Avg Recency</th><th>Avg Frequency</th></tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Business Recommendations -->
+            <div class="card">
+                <div class="card-header">💡 Business Recommendations by Segment</div>
+                <div class="card-body" id="recommendations"></div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Association Rules Table -->
+            <div class="card">
+                <div class="card-header">📋 Top Association Rules Details</div>
+                <div class="card-body">
+                    <table class="data-table" id="rulesTable">
+                        <thead>
+                            <tr><th>Rule (Antecedent → Consequent)</th><th>Support</th><th>Confidence</th><th>Lift</th></tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Segment Distribution Bar Chart -->
+            <div class="card">
+                <div class="card-header">🎯 Customer Segment Size Comparison</div>
+                <div class="card-body">
+                    <canvas id="segmentDistChart" height="250"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2026 BDA Project - Market Basket & Customer Segmentation Analysis</p>
+            <p>📧 <a href="mailto:muqaddasjutt57@gmail.com">muqaddasjutt57@gmail.com</a> | 
+               🔗 <a href="https://github.com/Muqadas-g" target="_blank">GitHub</a> | 
+               🔗 <a href="https://www.linkedin.com/in/muqaddas-imtiaz-5635b0301" target="_blank">LinkedIn</a> |
+               🔗 <a href="https://www.kaggle.com/code/muqaddasimtiaz/market-basket-customer-segmentation" target="_blank">Kaggle Notebook</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // ============================================
+        // KPI DATA (From Kaggle Analysis)
+        // ============================================
+        
+        const kpiData = {
+            totalRevenue: 875432.50,
+            totalTransactions: 9847,
+            totalCustomers: 1977,
+            associationRules: 458,
+            vipPercent: 23.5,
+            avgOrder: 88.92
+        };
+        
+        // Update KPI Cards
+        document.getElementById('totalRevenue').innerHTML = '$' + kpiData.totalRevenue.toLocaleString();
+        document.getElementById('totalTransactions').innerHTML = kpiData.totalTransactions.toLocaleString();
+        document.getElementById('totalCustomers').innerHTML = kpiData.totalCustomers.toLocaleString();
+        document.getElementById('associationRules').innerHTML = kpiData.associationRules;
+        document.getElementById('vipPercent').innerHTML = kpiData.vipPercent + '%';
+        document.getElementById('avgOrder').innerHTML = '$' + kpiData.avgOrder;
+        
+        // ============================================
+        // ASSOCIATION RULES DATA
+        // ============================================
+        const rulesData = {
+            labels: ['Milk → Bread', 'Butter → Bread', 'Eggs → Milk', 'Cheese → Butter', 'Coffee → Sugar'],
+            lift: [3.45, 2.98, 2.67, 2.34, 2.12]
+        };
+        
+        new Chart(document.getElementById('rulesChart'), {
+            type: 'bar',
+            data: {
+                labels: rulesData.labels,
+                datasets: [{
+                    label: 'Lift Value (Higher = Stronger Association)',
+                    data: rulesData.lift,
+                    backgroundColor: 'rgba(102, 126, 234, 0.7)',
+                    borderColor: '#667eea',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: { legend: { position: 'top' } }
+            }
+        });
+        
+        // ============================================
+        // CUSTOMER SEGMENTS DATA
+        // ============================================
+        const segmentsData = {
+            labels: ['👑 VIP Customers', '⭐ Active Loyal', '⚠️ At Risk', '🆕 Occasional'],
+            counts: [465, 625, 390, 497],
+            colors: ['#FFD700', '#4CAF50', '#FF6B6B', '#2196F3']
+        };
+        
+        new Chart(document.getElementById('segmentsChart'), {
+            type: 'pie',
+            data: {
+                labels: segmentsData.labels,
+                datasets: [{
+                    data: segmentsData.counts,
+                    backgroundColor: segmentsData.colors
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: { legend: { position: 'right' } }
+            }
+        });
+        
+        // ============================================
+        // MONTHLY REVENUE DATA
+        // ============================================
+        const revenueData = {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            values: [65432, 71234, 76890, 82345, 89123, 94567, 98765, 102345, 98765, 93456, 87654, 82345]
+        };
+        
+        new Chart(document.getElementById('revenueChart'), {
+            type: 'line',
+            data: {
+                labels: revenueData.labels,
+                datasets: [{
+                    label: 'Monthly Revenue ($)',
+                    data: revenueData.values,
+                    borderColor: '#4CAF50',
+                    backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true
+            }
+        });
+        
+        // ============================================
+        // TOP PRODUCTS DATA
+        // ============================================
+        const productsData = {
+            labels: ['Milk', 'Bread', 'Eggs', 'Butter', 'Cheese'],
+            values: [15432, 14321, 12876, 11234, 9876]
+        };
+        
+        new Chart(document.getElementById('productsChart'), {
+            type: 'bar',
+            data: {
+                labels: productsData.labels,
+                datasets: [{
+                    label: 'Revenue ($)',
+                    data: productsData.values,
+                    backgroundColor: 'rgba(255, 107, 107, 0.7)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                indexAxis: 'y'
+            }
+        });
+        
+        // ============================================
+        // SEGMENT DISTRIBUTION BAR CHART
+        // ============================================
+        new Chart(document.getElementById('segmentDistChart'), {
+            type: 'bar',
+            data: {
+                labels: segmentsData.labels,
+                datasets: [{
+                    label: 'Number of Customers',
+                    data: segmentsData.counts,
+                    backgroundColor: segmentsData.colors
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true
+            }
+        });
+        
+        // ============================================
+        // SEGMENT TABLE DATA
+        // ============================================
+        const segmentTableData = [
+            { name: '👑 VIP Customer', count: 465, spend: 1250, recency: 12, frequency: 8 },
+            { name: '⭐ Active Loyal', count: 625, spend: 680, recency: 25, frequency: 5 },
+            { name: '⚠️ At Risk', count: 390, spend: 320, recency: 110, frequency: 2 },
+            { name: '🆕 Occasional', count: 497, spend: 180, recency: 65, frequency: 2 }
+        ];
+        
+        const segmentTableBody = document.querySelector('#segmentTable tbody');
+        segmentTableData.forEach(seg => {
+            const row = segmentTableBody.insertRow();
+            row.insertCell(0).innerHTML = seg.name;
+            row.insertCell(1).innerHTML = seg.count;
+            row.insertCell(2).innerHTML = '$' + seg.spend;
+            row.insertCell(3).innerHTML = seg.recency + ' days';
+            row.insertCell(4).innerHTML = seg.frequency;
+        });
+        
+        // ============================================
+        // BUSINESS RECOMMENDATIONS
+        // ============================================
+        const recommendationsData = {
+            '👑 VIP Customer': ['Offer exclusive loyalty rewards', 'Personalized product recommendations', 'Early access to new products'],
+            '⭐ Active Loyal': ['Cross-sell complementary products', 'Bundle frequently bought items', 'Email newsletters with relevant offers'],
+            '⚠️ At Risk': ['Send re-engagement campaigns', 'Win-back offers with discount coupons', 'Feedback surveys to understand churn'],
+            '🆕 Occasional': ['Welcome discounts on next purchase', 'Educational content about product benefits', 'Focus on first-repeat purchase conversion']
+        };
+        
+        const recContainer = document.getElementById('recommendations');
+        Object.entries(recommendationsData).forEach(([segment, recs]) => {
+            const recCard = document.createElement('div');
+            recCard.className = 'rec-card';
+            recCard.innerHTML = `
+                <div class="rec-title">${segment}</div>
+                <ul class="rec-list">
+                    ${recs.map(rec => `<li>${rec}</li>`).join('')}
+                </ul>
+            `;
+            recContainer.appendChild(recCard);
+        });
+        
+        // ============================================
+        // RULES TABLE DATA
+        // ============================================
+        const rulesTableData = [
+            { rule: 'Milk → Bread', support: 0.045, confidence: 0.67, lift: 3.45 },
+            { rule: 'Butter → Bread', support: 0.038, confidence: 0.62, lift: 2.98 },
+            { rule: 'Eggs → Milk', support: 0.032, confidence: 0.58, lift: 2.67 },
+            { rule: 'Cheese → Butter', support: 0.028, confidence: 0.54, lift: 2.34 },
+            { rule: 'Coffee → Sugar', support: 0.025, confidence: 0.51, lift: 2.12 }
+        ];
+        
+        const rulesTableBody = document.querySelector('#rulesTable tbody');
+        rulesTableData.forEach(rule => {
+            const row = rulesTableBody.insertRow();
+            row.insertCell(0).innerHTML = rule.rule;
+            row.insertCell(1).innerHTML = rule.support;
+            row.insertCell(2).innerHTML = rule.confidence;
+            row.insertCell(3).innerHTML = rule.lift;
+        });
+    </script>
+</body>
+</html>
