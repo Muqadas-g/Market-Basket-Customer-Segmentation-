@@ -1,262 +1,222 @@
-# 🛒 Market Basket & Customer Segmentation Analysis
 
-## 📊 Big Data Analytics Course Project
 
-### 👤 Author
+```markdown
+<div align="center">
 
-**Muqaddas Imtiaz**
+# <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=30&pause=1000&color=E94560&center=true&vCenter=true&width=500&lines=Hi+%F0%9F%91%8B+I'm+Muqaddas+Imtiaz" alt="Typing SVG" />
 
-* LinkedIn: [https://www.linkedin.com/in/muqaddas-imtiaz-5635b0301](https://www.linkedin.com/in/muqaddas-imtiaz-5635b0301)
-* GitHub: [https://github.com/Muqadas-g](https://github.com/Muqadas-g)
-* Kaggle: [https://www.kaggle.com/code/muqaddasimtiaz/market-basket-customer-segmentation](https://www.kaggle.com/code/muqaddasimtiaz/market-basket-customer-segmentation)
-* Email: [muqaddasjutt57@gmail.com](mailto:muqaddasjutt57@gmail.com)
+### 🎓 Data Science Student @ QUEST Nawabshah  
+### 💻 Web Developer | Big Data Analytics Enthusiast
 
----
-
-# 📌 Project Overview
-
-This project is based on Market Basket Analysis and Customer Segmentation using Big Data Analytics techniques.
-
-The purpose of this project is to analyze customer purchasing behavior, identify products that are frequently bought together, and group customers into different segments based on their spending and purchasing habits.
-
-This project helps businesses improve:
-
-* Product placement
-* Marketing strategies
-* Customer retention
-* Personalized recommendations
-* Sales growth
+</div>
 
 ---
 
-# 🎯 Main Objectives
+## 🧑‍💻 About Me
 
-* Find frequently purchased product combinations
-* Identify association rules between products
-* Segment customers into meaningful groups
-* Analyze customer buying patterns
-* Generate business recommendations
-* Build an interactive dashboard for visualization
-
----
-
-# 🧠 Project Components
-
-## 1. Market Basket Analysis
-
-Market Basket Analysis is used to discover relationships between products.
-
-Example:
-
-* Customers who buy Milk often buy Bread
-* Customers who buy Butter also buy Eggs
-
-Technique Used:
-
-* Apriori Algorithm
-* Association Rule Mining
+```python
+class MuqaddasImtiaz:
+    def __init__(self):
+        self.name = "Muqaddas Imtiaz"
+        self.education = "BS Data Science | QUEST Nawabshah"
+        self.skills = ["Python", "SQL", "HTML/CSS/JS", "Java", "C"]
+        self.interests = ["Big Data", "Machine Learning", "Web Development"]
+    
+    def current_focus(self):
+        return "Final Year Project | Market Basket & Customer Segmentation"
+    
+    def goals(self):
+        return "Building impactful data-driven solutions"
+```
 
 ---
 
-## 2. Customer Segmentation
+## 📊 GitHub Stats
 
-Customer Segmentation is used to divide customers into different groups according to their behavior.
+<div align="center">
 
-Technique Used:
+| ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=Muqadas-g&show_icons=true&theme=radical&hide_border=true&bg_color=0D1117&icon_color=E94560) | ![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=Muqadas-g&theme=radical&hide_border=true&background=0D1117&stroke=E94560&ring=E94560&fire=E94560) |
+|:---:|:---:|
+| ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Muqadas-g&layout=compact&theme=radical&hide_border=true&bg_color=0D1117) | ![Profile Views](https://komarev.com/ghpvc/?username=Muqadas-g&color=E94560&style=flat-square&label=Profile+Views) |
 
-* K-Means Clustering
-
-Possible Customer Groups:
-
-* VIP Customers
-* Loyal Customers
-* Occasional Buyers
-* At-Risk Customers
+</div>
 
 ---
 
-# 🛠️ Technologies Used
+## 🎯 Current Project
 
-| Tool / Technology   | Purpose                      |
-| ------------------- | ---------------------------- |
-| Python              | Main programming language    |
-| Pandas              | Data cleaning and processing |
-| NumPy               | Numerical calculations       |
-| Mlxtend             | Apriori Algorithm            |
-| Scikit-learn        | K-Means Clustering           |
-| Matplotlib          | Data visualization           |
-| Seaborn             | Charts and graphs            |
-| HTML/CSS/JavaScript | Dashboard design             |
-| Chart.js            | Interactive charts           |
-| Kaggle Notebook     | Code execution and analysis  |
-| GitHub              | Project hosting              |
+<div align="center">
 
----
+### 🛒 Market Basket & Customer Segmentation Analysis
 
-# 📂 Dataset Information
+[![Project Demo](https://img.shields.io/badge/Live_Demo-FF5722?style=for-the-badge&logo=netlify&logoColor=white)](https://customer-segmentation-dashboard.netlify.app/)
+[![Kaggle](https://img.shields.io/badge/Kaggle_Notebook-20BEFF?style=for-the-badge&logo=kaggle&logoColor=white)](https://www.kaggle.com/code/muqaddasimtiaz/market-basket-customer-segmentation)
+[![GitHub](https://img.shields.io/badge/GitHub_Repo-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Muqadas-g/Market-Basket-Customer-Segmentation-FYP)
 
-This project uses a self-created synthetic dataset instead of an external dataset.
+</div>
 
-Two datasets were generated:
+**📌 Project Highlights:**
 
-## Transaction Dataset
-
-Columns:
-
-* Invoice_ID
-* Product
-* Quantity
-* Date
-
-## Customer Dataset
-
-Columns:
-
-* Customer_ID
-* Total_Spending
-* Frequency
-
-The dataset was designed to simulate real supermarket and retail customer behavior.
+```
+┌─────────────────────────────────────────────────────────────┐
+│  ✅ 458 Association Rules Discovered                        │
+│  ✅ 4 Customer Segments (VIP, Loyal, At-Risk, Occasional)   │
+│  ✅ Interactive Real-time Dashboard                         │
+│  ✅ Apriori Algorithm + K-Means Clustering                  │
+│  ✅ RFM Analysis for Customer Profiling                     │
+└─────────────────────────────────────────────────────────────┘
+```
 
 ---
 
-# 📁 Project Structure
+## 🛠️ Tech Toolbox
 
+<div align="center">
+
+### Languages
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![C](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+
+### Frontend
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+
+### Data Science
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
+![Scikit-Learn](https://img.shields.io/badge/Scikit_Learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=python&logoColor=white)
+
+### Tools
+![Kaggle](https://img.shields.io/badge/Kaggle-20BEFF?style=for-the-badge&logo=kaggle&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+
+</div>
+
+---
+
+## 📈 GitHub Activity
+
+<div align="center">
+
+![GitHub Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=Muqadas-g&theme=react-dark&hide_border=true&bg_color=0D1117&color=E94560&line=E94560&point=FFFFFF)
+
+</div>
+
+---
+
+## 🐍 Contribution Snake
+
+<div align="center">
+
+![Snake Animation](https://raw.githubusercontent.com/Muqadas-g/Muqadas-g/output/github-contribution-grid-snake-dark.svg)
+
+</div>
+
+---
+
+## 🚀 What I'm Working On
+
+```mermaid
+mindmap
+  root((Muqaddas Imtiaz))
+    Web Development
+      Portfolio Websites
+      E-commerce Designs
+      Responsive UI/UX
+    Data Science
+      Market Basket Analysis
+      Customer Segmentation
+      Big Data Analytics
+    Machine Learning
+      K-Means Clustering
+      Apriori Algorithm
+      RFM Analysis
+```
+
+---
+
+## 📫 Connect With Me
+
+<div align="center">
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/muqaddas-imtiaz-5635b0301)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Muqadas-g)
+[![Kaggle](https://img.shields.io/badge/Kaggle-20BEFF?style=for-the-badge&logo=kaggle&logoColor=white)](https://www.kaggle.com/code/muqaddasimtiaz/market-basket-customer-segmentation)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:muqaddasjutt57@gmail.com)
+[![Fiverr](https://img.shields.io/badge/Fiverr-1DBF73?style=for-the-badge&logo=fiverr&logoColor=white)](https://www.fiverr.com/pe/pdlxXgp)
+
+</div>
+
+---
+
+## 📊 Weekly Activity
+
+<!--START_SECTION:waka-->
 ```text
-├── kaggle_notebook.ipynb
-├── app.py
-├── dashboard.html
-├── transactions.csv
-├── customers.csv
-├── association_rules.csv
-├── customer_segments.csv
-├── segment_profiles.csv
-├── Business_Report.txt
-├── README.md
-└── visualizations/
+Python        ████████████████████░░░░   78.4%
+HTML/CSS      ████████░░░░░░░░░░░░░░░░   28.2%
+JavaScript    ██████░░░░░░░░░░░░░░░░░░   22.5%
+SQL           ████░░░░░░░░░░░░░░░░░░░░   15.3%
+```
+<!--END_SECTION:waka-->
+
+---
+
+## 🏆 GitHub Trophies
+
+<div align="center">
+
+![GitHub Trophies](https://github-profile-trophy.vercel.app/?username=Muqadas-g&theme=radical&no-frame=true&row=1&column=6&margin-w=10)
+
+</div>
+
+---
+
+## 💬 Quote of the Day
+
+<div align="center">
+
+> *"Data is the new oil, but it's only valuable when refined."*
+
+</div>
+
+---
+
+## 📌 Recent Activity
+
+<!--RECENT_ACTIVITY:start-->
+- ✅ Completed Final Year Project on Market Basket Analysis
+- 🚀 Deployed Live Dashboard on Netlify
+- 📓 Published Kaggle Notebook with 458 Association Rules
+- 💻 Created Professional GitHub Profile README
+<!--RECENT_ACTIVITY:end-->
+
+---
+
+## ✨ Fun Fact
+
+```javascript
+console.log("I don't just study Data Science — I build real-world intelligent systems!");
 ```
 
 ---
 
-# 📈 Key Features
+<div align="center">
 
-* Product association analysis
-* Frequent itemset generation
-* Customer clustering
-* Spending pattern analysis
-* Interactive dashboard
-* Charts and visual reports
-* Business recommendations
+### 🌟 *"Code. Create. Innovate."* 🌟
 
----
+**© 2025 Muqaddas Imtiaz | All Rights Reserved**
 
-# 📊 Dashboard Features
+![Footer](https://capsule-render.vercel.app/api?type=waving&color=E94560&height=100&section=footer)
 
-The dashboard includes:
-
-* Total Revenue Card
-* Total Customers Card
-* Total Transactions Card
-* Top Selling Products Chart
-* Customer Segmentation Pie Chart
-* Monthly Sales Trend
-* Association Rules Table
-* Business Insights Section
-
----
-
-# 🏆 Example Business Insights
-
-## Market Basket Insights
-
-* Milk and Bread are often bought together
-* Butter and Eggs show strong association
-* Chips and Juice are popular bundle items
-
-## Customer Segmentation Insights
-
-### VIP Customers
-
-* High spending
-* Frequent purchases
-* Best target for loyalty rewards
-
-### Loyal Customers
-
-* Regular buyers
-* Good target for cross-selling
-
-### Occasional Customers
-
-* Low frequency purchases
-* Can be encouraged with discount offers
-
-### At-Risk Customers
-
-* Reduced activity
-* Need re-engagement campaigns
-
----
-
-# 🚀 Future Improvements
-
-Possible future enhancements include:
-
-* Real-time sales prediction
-* Recommendation system
-* Power BI dashboard
-* Streamlit deployment
-* Mobile responsive dashboard
-* Integration with live database
-
----
-
-# ▶️ How to Run the Project
-
-1. Download all project files
-2. Open the Kaggle Notebook or Python environment
-3. Install required libraries
-4. Run the notebook step-by-step
-5. Generate CSV outputs
-6. Open dashboard.html or run app.py
-
-Install libraries:
-
-```bash
-pip install pandas numpy matplotlib seaborn scikit-learn mlxtend streamlit
+</div>
 ```
 
-Run Streamlit App:
 
-```bash
-streamlit run app.py
-```
 
----
-
-# 🔗 Project Links
-
-* GitHub: [https://github.com/Muqadas-g](https://github.com/Muqadas-g)
-* LinkedIn: [https://www.linkedin.com/in/muqaddas-imtiaz-5635b0301](https://www.linkedin.com/in/muqaddas-imtiaz-5635b0301)
-* Kaggle: [https://www.kaggle.com/code/muqaddasimtiaz/market-basket-customer-segmentation](https://www.kaggle.com/code/muqaddasimtiaz/market-basket-customer-segmentation)
-
----
-
-# 📝 License
-
-This project is developed for educational purposes as part of a Big Data Analytics course project.
-
----
-
-# 🙏 Acknowledgements
-
-Special thanks to:
-
-* Course Instructor
-* University Faculty
-* Open-source Python libraries
-* Kaggle community
-
----
-
-**⭐ If you like this project, give it a star on G
