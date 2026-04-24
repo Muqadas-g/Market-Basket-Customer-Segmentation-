@@ -1,32 +1,3 @@
-```markdown
-<div align="center">
-
-# <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&pause=1000&color=E94560&center=true&vCenter=true&width=500&lines=Hi+👋+I'm+Muqaddas+Imtiaz" alt="Typing SVG" />
-
-### 🎓 BS Data Science | QUEST Nawabshah  
-### 💻 Web Developer | Big Data Analytics Enthusiast
-
-</div>
-
----
-
-## 📌 About Me
-
-```python
-class MuqaddasImtiaz:
-    def __init__(self):
-        self.name = "Muqaddas Imtiaz"
-        self.education = "BS Data Science | QUEST Nawabshah"
-        self.skills = ["Python", "SQL", "HTML/CSS/JS", "Java", "C"]
-        self.interests = ["Big Data", "Machine Learning", "Web Development"]
-    
-    def current_focus(self):
-        return "Final Year Project | Market Basket & Customer Segmentation"
-    
-    def goals(self):
-        return "Building impactful data-driven solutions"
-```
-
 ---
 
 ## 📊 GitHub Stats
@@ -183,11 +154,4 @@ console.log("I don't just study Data Science — I build real-world intelligent 
 </div>
 ```
 
----
 
-
-
-
-**Ab bilkul professional lagega!** 🎯
-
-Koi aur change chahiye? Batao! 😊
